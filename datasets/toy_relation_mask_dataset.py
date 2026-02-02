@@ -121,3 +121,4 @@ class ToyRelationMaskDataset(Dataset):
             "rel_box01": rel_box01,           # (4,)
             "pred_id": torch.tensor(pred_id, dtype=torch.long),
         }
+
