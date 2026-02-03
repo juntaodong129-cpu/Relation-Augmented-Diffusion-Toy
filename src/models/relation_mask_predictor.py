@@ -147,3 +147,4 @@ class SubjObjPredicateConditionedRelMaskPredictor(nn.Module):
 
         x = torch.cat([obj_masks, bg_mask.unsqueeze(1), rel_map], dim=1)  # (B,3+rel_dim,H,W)
         return self.core(x)  # (B,1,H,W)
+
