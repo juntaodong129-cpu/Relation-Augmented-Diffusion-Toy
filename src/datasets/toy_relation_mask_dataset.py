@@ -12,7 +12,7 @@ from src.geometry.relation_box import compute_relation_box
 class ToyRelMaskConfig:
     H: int = 64
     W: int = 64
-    n_objects: int = 2          # 先固定2个，避免collate复杂
+    n_objects: int = 2          
     min_size: float = 0.15
     max_size: float = 0.55
     seed: int = 0
@@ -121,3 +121,4 @@ class ToyRelationMaskDataset(Dataset):
             "rel_box01": rel_box01,           # (4,)
             "pred_id": torch.tensor(pred_id, dtype=torch.long),
         }
+
