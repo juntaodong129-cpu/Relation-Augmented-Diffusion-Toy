@@ -1,4 +1,4 @@
-Still In Progress
+## Still In Progress
 
 
 # Relation-Augmented Diffusion (Simplified)
@@ -16,11 +16,6 @@ layout-to-image generation, under limited computational resources.
 - Simplified relation box computation
 - Relation-aware conditioning in a diffusion pipeline
 - Toy-scale experiments for qualitative evaluation
-
-## What is omitted / simplified
-- Full-scale Stable Diffusion training
-- Large-scale datasets (e.g. COCO, HICO-DET)
-- Complex GCN architectures
 
 ## Motivation
 The project focuses on understanding *why* relation modeling
