@@ -1,26 +1,44 @@
 ## Still In Progress
 
 
-# Relation-Augmented Diffusion (Simplified)
+# Relation-Augmented Diffusion
 
 ## Overview
-This project is a simplified implementation inspired by
-"Relation-Augmented Diffusion for Layout-to-Image Generation".
+This project explores a lightweight approach to layout-to-image (L2I) generation using diffusion models.
 
-The goal is to reproduce and understand the core idea of
-explicit inter-object relation modeling in diffusion-based
-layout-to-image generation, under limited computational resources.
+Instead of relying on explicit subject–predicate–object triplets and graph neural networks (GCNs), we introduce a simple and scalable strategy:
 
-## What is implemented
-- Object bounding box conditioning
-- Simplified relation box computation
-- Relation-aware conditioning in a diffusion pipeline
-- Toy-scale experiments for qualitative evaluation
+Spatially modulating cross-attention inside predefined relation boxes.
 
-## Motivation
-The project focuses on understanding *why* relation modeling
-improves spatial and semantic consistency, rather than achieving
-state-of-the-art performance.
+The goal is to improve interaction consistency and layout adherence while keeping the model efficient.
 
-## Reference
-Relation-Augmented Diffusion for Layout-to-Image Generation
+## Key Idea
+We apply Relation-Aware Attention Scaling to the cross-attention update in diffusion models.
+
+Given:
+
+hidden state h
+
+cross-attention output o
+
+spatial relation mask m ∈ {0,1}
+
+scales α (inside box) and β (outside box)
+
+We compute:
+
+Δ = o - h
+s = β + (α - β) * m
+h' = h + Δ * s
+
+α controls text influence inside the relation box
+
+β controls update strength outside
+
+This avoids:
+
+Graph reasoning
+
+Quadratic object-pair complexity
+
+Explicit structured triplet modeling
